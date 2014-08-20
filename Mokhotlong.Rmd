@@ -1,0 +1,88 @@
+---
+title: "Mokhotlong"
+author: "Marata T.I"
+date: "Monday, August 18, 2014"
+output: word_document
+---
+
+New Bacteriologically Confirmed TB patients
+```{r, echo =FALSE}
+#.............................Treatment Outcomes...................................#
+
+BposA <- c(70,60,76.5,75,72.4,55.5) # Treatment success rate among New B+ patients
+BposB <- c(30,20,23.5,15,20.7,21) # Death rate among New B+ patients
+BposC <- c(0,5,0,0,3.4,14)        # Failure rate among new bacteriologically confirmed
+# Plots For New B+
+g_range <- range(0, 100)
+plot(BposA, type = "o", col=11,ylim=g_range, axes=FALSE,ann=FALSE)
+axis(1, at=1:7, lab= c("Q2_2009", "Q2_2010", "Q2_2011", "Q2_2012", "Q2_2013","Q1_2014", "Q2_2014"))
+axis(2, las=1, at=10*0:100)
+abline(h=85, col=8, lty =1)
+
+title(main="Rx OUTCOMES Among New B+ TB Cases", col.main=rgb(0,0.5,0), font.main=3)
+title(xlab="QUARTER", col.lab=rgb(0,0.5,0), font.lab =3)
+title(ylab="% Of Cases", col.lab=rgb(0,0.5,0),font.lab =3)
+box()
+lines(BposB, type="o", pch=22, lty=2, col=13)
+lines(BposC, type="o", pch=22, lty=1, col=12)
+legend("top", legend = c("TSR", "Death Rate","Failure"), ncol = 3, cex = 0.8, bty= "n", col = c(11,13,12), lty = 1, lwd =2)
+```
+All New cases
+```{r, echo =FALSE}
+NewA <- c(75.3,59.8,65.2,74.2,70.8,79) # Treatment success rate among all New patients
+NewB <- c(19.6,30.4,34.8,22.7,26.1,14) # Death rate among All New cases 
+NewC <- c(0,2,0,0,1.5,6)              # Failure rate among all new patients
+# Plots For New cases
+g_range <- range(0, 100)
+plot(NewA, type = "o", col=11,ylim=g_range, axes=FALSE,ann=FALSE)
+axis(1, at=1:7, lab=c("Q2_2009", "Q2_2010", "Q2_2011", "Q2_2012", "Q2_2013","Q1_2014", "Q2_2014"))
+axis(2, las=1, at=10*0:100)
+title(main="Rx OUTCOMES Among New TB Cases ", col.main=rgb(0,0.5,0), font.main=3)
+title(xlab="QUARTER", col.lab=rgb(0,0.5,0), font.lab =3)
+title(ylab="% Of Cases", col.lab=rgb(0,0.5,0),font.lab =3)
+box()
+abline(h=85, col=14, lty =1)
+lines(NewB, type="o", pch=22, lty=2, col=13)
+lines(NewC, type="o", pch=22, lty=1, col=12)
+legend("top", legend = c("TSR", "Death Rate","Failure"), ncol = 3, cex = 0.8, bty= "n", col = c(11,13,12), lty = 1, lwd =2)
+```
+Retreatment cases
+```{r, echo =FALSE}
+RetrA <- c(20.8,87.5,25,62.5,90.9,0) # Treatment success rate among Retreatment Cases
+RetrB <- c(25,12.5,75,37.5,9.1,100) # Death rate among Retreatment cases
+RetrC <- c(0,0,0,0,0,0)              # Failure rate among retreatment cases
+Retreatment <-data.frame(Years,RetrA,RetrB,RetrC)
+g_range <- range(0, 100)
+plot(RetrA, type = "o", col=4,ylim=g_range, axes=FALSE,ann=FALSE)
+axis(1, at=1:7, lab=c("Q2_2009", "Q2_2010", "Q2_2011", "Q2_2012", "Q2_2013","Q1_2014", "Q2_2014"))
+axis(2, las=1, at=10*0:100)
+title(main="TB Rx OUTCOMES Among Retreatment cases", col.main=rgb(0,0.5,0), font.main=3)
+title(xlab="QUARTER", col.lab=rgb(0,0.5,0), font.lab =3)
+title(ylab="% Of Cases", col.lab=rgb(0,0.5,0),font.lab =3)
+box()
+abline(h=85, col=5, lty =1)
+lines(NewB, type="o", pch=22, lty=2, col=2)
+lines(NewC, type="o", pch=22, lty=1, col=3)
+legend("top", legend = c("TSR", "Death Rate","Failure"), ncol = 3, cex = 0.8, bty= "n", col = c(4,2,3), lty = 1, lwd =2)
+```
+
+# Hiv Pos
+```{r, echo =FALSE}
+NewBpTSR <- c(69,71,62,62,53) #Treatment Success rate among New HIV Positive bacteriologically confirmed TB cases
+BposB <- c(20,23.5,15,20.7,20.7) # Death rate among all new B+ TB patients
+NewBposDeath <- c(17,29,23,23,26) # Death rate among new HIV Positive bacteriologically confirmed TB cases
+g_range <- range(0, 100)
+plot(NewBpTSR, type = "o", col=11,ylim=g_range, axes=FALSE,ann=FALSE)
+axis(1, at=1:6, lab= c("Q2_2010", "Q2_2011", "Q2_2012", "Q2_2013","Q1_2014", "Q2_2014"))
+axis(2, las=1, at=10*0:100)
+abline(h=85, col=8, lty =1)
+
+title(main="Rx OUTCOMES Among New B+ HIV Pos TB Cases", col.main=rgb(0,0.5,0), font.main=3)
+title(xlab="QUARTER", col.lab=rgb(0,0.5,0), font.lab =3)
+title(ylab="% Of Cases", col.lab=rgb(0,0.5,0),font.lab =3)
+box()
+lines(BposB, type="o", pch=22, lty=2, col=13)
+lines(NewBposDeath, type="o", pch=22, lty=1, col=12)
+legend("top", legend = c("TSR","Death Rate New B+","Death Rate among HIV Pos"), 
+       ncol = 2, cex = 0.8, bty= "n", col = c(11,13,12), lty = 1, lwd =2)
+```
